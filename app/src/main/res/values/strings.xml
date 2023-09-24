@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SEWSharedPreferences</string>
+    <string name="app_title">SEW 7a4 - Shared Preferences</string>
+    <string name="name_input_text">Name:</string>
+    <string name="button_save">Save</string>
+    <string name="button_delete">Delete</string>
 </resources>

@@ -29,9 +29,11 @@ public class MainActivity extends AppCompatActivity {
         // if the current shared preferences have the name already saved
         if (!currentSharedPreferenceNameValue.equals(""))    {
             nameTextInput.setText(currentSharedPreferenceNameValue);
+            Log.i(LOG_TAG, "Successfully loaded the name \"" + currentSharedPreferenceNameValue + "\" into the app.");
         } else {
             String initialValue = getResources().getString(R.string.initial_value);
             nameTextInput.setText(initialValue);
+            Log.i(LOG_TAG, "There was no pre-saved name, loading \"" + initialValue + "\" into the app.");
         }
 
         // get the save button view
@@ -50,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
         //attach an eventlistener to the delete button
         deleteButton.setOnClickListener(new View.OnClickListener()  {
             public void onClick (View v)    {
-
+                String userNameInput = nameTextInput.getText().toString();
+                deleteSharedPreference(userNameInput);
+                Log.i(LOG_TAG,"Successfully deleted \"" + userNameInput + "\" from the shared preferences!");
             }
         });
     }
@@ -66,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
         edit.commit();
     }
 
+    private void deleteSharedPreference(String key) {
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        //remove the given key out of the shared preferences
+        editor.remove(key);
+        editor.commit();
+    }
 
     private String returnNameOutOfSharedPreferences() {
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);

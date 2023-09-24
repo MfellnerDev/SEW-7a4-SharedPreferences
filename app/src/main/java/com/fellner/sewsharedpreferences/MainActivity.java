@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener()  {
             public void onClick (View v)    {
                 String userNameInput = nameTextInput.getText().toString();
-                deleteSharedPreference(userNameInput);
+                deleteSharedAllPreferences();
                 Log.i(LOG_TAG,"Successfully deleted \"" + userNameInput + "\" from the shared preferences!");
             }
         });
@@ -67,16 +67,16 @@ public class MainActivity extends AppCompatActivity {
         // put our input in the editor
         edit.putString("name", inputToStore);
         //commit the changes -> they'll get saved
-        edit.commit();
+        edit.apply();
     }
 
-    private void deleteSharedPreference(String key) {
+    private void deleteSharedAllPreferences() {
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        //remove the given key out of the shared preferences
-        editor.remove(key);
-        editor.commit();
+        //clear all shared preferences
+        editor.clear();
+        editor.apply();
     }
 
     private String returnNameOutOfSharedPreferences() {

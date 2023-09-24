@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String returnNameOutOfSharedPreferences() {
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
-
+        // get the key out of shared preferences, if the key is not present, return ""
         return sharedPreferences.getString("name", "");
     }
 }

@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor edit = sharedPreferences.edit();
         // put our input in the editor
         edit.putString("name", inputToStore);
-        //commit the changes -> they'll get saved
+        //apply the changes -> they'll get saved
         edit.apply();
     }
 
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         //clear all shared preferences
         editor.clear();
+        //apply the changes
         editor.apply();
     }
 
